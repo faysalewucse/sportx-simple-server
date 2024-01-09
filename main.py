@@ -12,6 +12,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",
+    "https://sportx-artif.netlify.app"
 ]
 
 # what is a middleware? 
