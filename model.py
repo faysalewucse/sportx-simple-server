@@ -16,6 +16,7 @@ class Game(BaseModel):
     team: str
     sp_name: str
     sp_id: Union[int, str]
+    sp_id2: str
     League: str
     Handed: str
     age: str
