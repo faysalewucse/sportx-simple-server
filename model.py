@@ -1,7 +1,3 @@
-#  @bekbrace
-#  FARMSTACK Tutorial - Sunday 13.06.2021
-
-# Pydantic allows auto creation of JSON Schemas from models
 import uuid
 from pydantic import BaseModel, Field
 from typing import List, Union, Optional
@@ -10,6 +6,7 @@ from typing import List, Union, Optional
 class Game(BaseModel):
     id: str
     chart_type: str
+    sea: int
     gid: str
     game_time: str
     game_date: str

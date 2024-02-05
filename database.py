@@ -7,9 +7,9 @@ database = client.sportx
 collection = database.games
 
 
-async def fetch_all_games():
+async def fetch_all_games(year: int):
     games = []
-    cursor = collection.find({})
+    cursor = collection.find({"sea": year})
     async for document in cursor:
         game_data = {**document, 'id': str(document['_id'])}
         print(game_data)
