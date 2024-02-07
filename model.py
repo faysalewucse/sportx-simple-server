@@ -38,4 +38,5 @@ class Game(BaseModel):
     Cy_rank_overall: Optional[int] = None
     Trade_data: Union[list[Union[str, int]], str]
     sctr_arr: List[Union[str, int]]
+    Plyr_fields: List[Union[str, int]]
 
