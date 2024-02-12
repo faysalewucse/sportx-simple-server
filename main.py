@@ -31,6 +31,12 @@ async def read_root():
     return "Server is Running"
 
 
+@app.get("/api/games/first")
+async def get_first_game():
+    response = await fetch_first_game()
+    return response
+
+
 @app.get("/api/games")
 async def get_all_games():
     response = await fetch_all_games()
@@ -38,7 +44,7 @@ async def get_all_games():
 
 
 @app.get("/api/games/{sp_id}")
-async def get_all_games(sp_id: int):
+async def get_games_by_sp_id(sp_id: int):
     response = await fetch_games_by_sp_id(sp_id)
     return response
 
@@ -46,12 +52,6 @@ async def get_all_games(sp_id: int):
 @app.get("/api/games/teams")
 async def get_all_teams():
     response = await fetch_teams()
-    return response
-
-
-@app.get("/api/games/first-game")
-async def get_first_game():
-    response = await fetch_first_game()
     return response
 
 
