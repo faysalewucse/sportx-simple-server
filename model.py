@@ -15,6 +15,7 @@ class Game(BaseModel):
     sp_name: str
     sp_id: Union[int, str]
     sp_id2: str
+    bio_arr: Union[list[Union[str, int]], str]
     League: str
     Handed: str
     age: str
@@ -28,6 +29,9 @@ class Game(BaseModel):
     GS: Union[int, str]
     y_arr: str
     bar_color: str
+    trad_arr: Union[list[Union[str, int]], str]
+    sc_arr: Union[list[Union[str, int]], str]
+    Durr_arr: Union[list[Union[str, int]], str]
     awx: Union[float, str]
     twx: Union[int, str]
     cy_p: float
