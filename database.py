@@ -8,13 +8,16 @@ collection = database.games
 
 
 async def fetch_paired_teams():
-    cursor = collection.find({"homepage_x": "ts"})
+    cursor = collection.find({"homepage_x": {"$regex": "^ts_[AH]_\d+$"}})
 
     # Fetch and convert games
     games = []
     async for document in cursor:
         game_data = {**document, 'id': str(document['_id'])}
         games.append(Game(**game_data))
+
+    # Sort games by homepage_x
+    games.sort(key=lambda x: int(x.homepage_x.split('_')[-1]))
 
     # Pair teams logic
     paired_teams = [
