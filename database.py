@@ -8,7 +8,7 @@ collection = database.games
 
 
 async def fetch_paired_teams():
-    cursor = collection.find({"homepage_x": {"$regex": "^ts_[AH]_\d+$"}})
+    cursor = collection.find({"homepage_x": {"$regex": "^ts_[AH]_\d+$"}, "team": {"$ne": "News"}})
 
     # Fetch and convert games
     games = []
@@ -28,7 +28,7 @@ async def fetch_paired_teams():
 
 
 async def fetch_teams():
-    cursor = collection.find({"$expr": {"$eq": ["$team", "$sp_name"]}})
+    cursor = collection.find({"team": {"$ne": "News"}, "$expr": {"$eq": ["$team", "$sp_name"]}})
 
     # Fetch and convert games
     games = []
@@ -57,9 +57,19 @@ async def fetch_games_by_sp_id(sp_id: int):
     return games
 
 
+async def fetch_all_news():
+    news = []
+    cursor = collection.find({"team": "News"})
+    async for document in cursor:
+        game_data = {**document, 'id': str(document['_id'])}
+        print(game_data)
+        news.append(Game(**game_data))
+    return news
+
+
 async def fetch_all_games():
     games = []
-    cursor = collection.find()
+    cursor = collection.find({"team": {"$ne": "News"}})
     async for document in cursor:
         game_data = {**document, 'id': str(document['_id'])}
         games.append(Game(**game_data))

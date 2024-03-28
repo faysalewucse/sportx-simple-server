@@ -31,7 +31,7 @@ class Game(BaseModel):
     bar_color: str
     trad_arr: Union[list[Union[str, int]], str]
     sc_arr: Union[list[Union[str, int]], str]
-    Durr_arr: Union[list[Union[str, int]], str]
+    # Durr_arr: Union[list[Union[str, int]], str]
     awx: Union[float, str]
     twx: Union[int, str]
     cy_p: float
@@ -43,6 +43,7 @@ class Game(BaseModel):
     Trade_data: Union[list[Union[str, int]], str]
     Cy_rank_overall: Optional[int] = None
     sctr_y: str
+    News: List[Union[str, int]]
     sctr_arr_23: List[Union[str, int]]
     sctr_arr_24: List[Union[str, int]]
     Plyr_fields: List[Union[str, int]]

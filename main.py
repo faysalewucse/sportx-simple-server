@@ -5,7 +5,8 @@ from database import (
     fetch_all_games,
     fetch_first_game,
     fetch_teams,
-    fetch_games_by_sp_id
+    fetch_games_by_sp_id,
+    fetch_all_news
 )
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -40,6 +41,12 @@ async def get_first_game():
 @app.get("/api/games")
 async def get_all_games():
     response = await fetch_all_games()
+    return response
+
+
+@app.get("/api/games/news")
+async def get_all_news():
+    response = await fetch_all_news()
     return response
 
 
