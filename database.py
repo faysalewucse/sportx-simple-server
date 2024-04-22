@@ -59,7 +59,7 @@ async def fetch_games_by_sp_id(sp_id: int):
 
 async def fetch_all_news():
     news = []
-    cursor = collection.find({"team": "News"})
+    cursor = collection.find({"team": "News"}).sort([("News.1", -1)])
     async for document in cursor:
         game_data = {**document, 'id': str(document['_id'])}
         print(game_data)
